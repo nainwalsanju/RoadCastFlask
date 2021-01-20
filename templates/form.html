@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var clicked;
+      function mysubmit() {
+          alert("Book Successfully Added");
+      }
+      </script>
+      <script type="text/javascript">
+        var clicked;
+        function mysubmit() {
+            alert("Author Successfully Added");
+        }
+        </script>
+  </head>
+
+  
+
+  <body>
+    
+    <div style="width: 50%; margin: auto;">
+      <div  style="display:inline-block; width:45%;text-align:center;">
+        <h3>Add Books To Postgresql database</h3>
+        <form method="POST" action="./addBook" class="form-horizontal" onsubmit="mysubmit();return true">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <input type="text" name="name">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="author">Author:</label>
+            <input type="text" name="author">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="year">Published Year:</label>
+            <input type="number" name="year">
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="price">Price:</label>
+            <input type="number" name="price" min="0">
+          </div>
+          <div class="form-group">
+            <input class="col-sm-offset-2 btn" type="submit" value="Add Book">
+          </div>
+        </form>
+      </div>
+    
+      <div  style="display:inline-block; width:45%;text-align:center;">
+      <h3>Add Authors to MySql database</h3>
+      <form method="POST" action="./addAuthor" class="form-horizontal" onsubmit="mysubmit2();return true">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="name">Name:</label>
+          <input type="text" name="name">
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="age">Age:</label>
+          <input type="number" name="age" min="0">
+        </div>
+        <div class="form-group">
+          <input class="col-sm-offset-2 btn" type="submit" value="Add Author">
+        </div>
+      </form>
+      </div>
+    </div>
+    <div style="margin: auto; width: auto;">
+      <div style="display:inline-table; width:45%;text-align:center;">
+        <h3>Books Table</h3>
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Published Year</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        {% for book in books %}
+          <tr>
+            <th scope="row">{{book.name}}</th>
+            <td>{{book.author}}</td>
+            <td>{{book.year}}</td>
+            <td>{{book.price}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      </div>
+      <div style="display:inline-table; width:45%;text-align:center;">
+        <h3>Author Table</h3>
+      <table class="table table-stripped">
+        <thead>
+          <tr>
+            <th scope="col">Author Name</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
+        {% for author in authors %}
+          <tr>
+            <th scope="row">{{author.name}}</th>
+            <td>{{author.age}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      </div>
+
+    </div>
+    
+    
+  </body>
+</html>
