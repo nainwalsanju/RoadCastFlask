@@ -27,7 +27,7 @@ def form():
 def addBook():
     if request.method == 'GET':
         books = InfoModel.query.all()
-        return "Login via the login Form"
+        return books
      
     if request.method == 'POST':
         name = request.form['name']
@@ -42,8 +42,8 @@ def addBook():
 @app.route('/addAuthor', methods = ['POST', 'GET'])
 def addAuthor():
     if request.method == 'GET':
-        books = InfoModel.query.all()
-        return "Login via the login Form"
+        authors = InfoModel.query.all()
+        return authors
      
     if request.method == 'POST':
         name = request.form['name']
